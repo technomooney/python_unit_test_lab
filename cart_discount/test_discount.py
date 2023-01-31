@@ -41,8 +41,30 @@ class TestDiscount(TestCase):
         returned_value = discount(items)
         self.assertEqual(expected_discount,returned_value)
 
+    def test_negitive_numbers(self):
+        prices = [313, 104, -282, -39, -343, -328, -445, 133, -55, 120]
+        with self.assertRaises(ValueError):
+            discount(prices)
 
+    def test_equal_prices(self):
+        prices = [10,10,10]
+        expected_discount = 10
+        self.assertEqual(expected_discount, discount(prices))  
+
+    def test_duplicate_lowest_value_prices(self):
+        prices = [10,10,5,5,5]
+        expected_discount = 5
+        self.assertEqual(expected_discount, discount(prices))  
+
+    def test_prices_that_are_zero(self):
+        prices = [0,0,0,0]
+        expected_discount = 0
+        self.assertEqual(expected_discount, discount(prices))  
     
+    def test_empty_prices(self):
+        prices = []
+        expected_discount = None
+        self.assertEqual(expected_discount, discount(prices))
 
     # TODO more unit tests here. Each test should test one scenario
 
