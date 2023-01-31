@@ -12,7 +12,10 @@ def discount(item_prices):
     try:
         number_of_items = len(item_prices)
         if number_of_items >= 3:
-            return min(item_prices)
+            min_num = min(item_prices)
+            if min_num < 0:
+                raise ValueError("There are negitive numbers, please try again")
+            return min_num
         return None
     except TypeError:
         return None
