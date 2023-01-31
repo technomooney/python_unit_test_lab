@@ -9,6 +9,12 @@ class TestDiscount(TestCase):
         expected_discount = 4
         self.assertEqual(expected_discount, discount(prices))
 
+    def test_string_list(self):
+        items = ['test', 'string', 'lists']
+        expected_discount = None
+        returned_value = discount(items)
+        self.assertEqual(expected_discount,returned_value)
+
     
     # TODO more unit tests here. Each test should test one scenario
 
